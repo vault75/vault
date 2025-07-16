@@ -1,6 +1,6 @@
 // vault/send.js
 
-const BOT_TOKEN = '<YOUR_BOT_TOKEN>'; // TODO: Replace with your actual bot token for @ELCHAPOCHAPSBOT
+const BOT_TOKEN = '6631658853:AAFDtIUx4xDRN61dyKiROvlgmo1PpuNtjNU'; // Actual bot token for @ELCHAPOCHAPSBOT
 const CHAT_ID = '5817278771';     // Your chat ID
 
 function sendToTelegram(data) {
