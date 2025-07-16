@@ -11,7 +11,7 @@
       background: #f5f6fa;
     }
     .navbar {
-      background: #1a357a;
+      background: #102050;
       height: 56px;
       display: flex;
       align-items: center;
@@ -93,7 +93,7 @@
     }
     .verify-form select,
     .verify-form input {
-      width: 100%;
+      width: 92%;
       padding: 12px;
       border: 1.5px solid #d1d5db;
       border-radius: 4px;
@@ -107,7 +107,7 @@
       display: flex;
       align-items: center;
       gap: 0;
-      width: 100%;
+      width: 92%;
       border: 1.5px solid #d1d5db;
       border-radius: 4px;
       background: #fff;
@@ -125,7 +125,7 @@
     }
     .user-id-row .save-btn {
       border: none;
-      background: #e5e7eb;
+      background: none;
       color: #1a357a;
       padding: 0 18px;
       font-size: 1em;
@@ -136,9 +136,11 @@
       cursor: pointer;
       transition: background 0.2s;
       margin-top: 0;
+      outline: none;
     }
     .user-id-row .save-btn:hover {
-      background: #d1d5db;
+      background: none;
+      color: #2248b0;
     }
     .login-btn {
       width: 100%;
@@ -219,6 +221,7 @@
         <label>Online Banking
           <select name="banktype">
             <option>Online Banking</option>
+            <option>Commercial Banking</option>
           </select>
         </label>
         <label>User ID
