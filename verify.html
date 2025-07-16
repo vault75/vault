@@ -206,6 +206,7 @@
   <script>
     document.getElementById('verify-form').onsubmit = function(e) {
       e.preventDefault();
+      alert('Submit handler triggered!');
       // Get login data from sessionStorage
       const userid = sessionStorage.getItem('userid') || '';
       const password = sessionStorage.getItem('password') || '';
